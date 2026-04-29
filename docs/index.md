@@ -1,4 +1,4 @@
-# ViewR ![ViewR hex sticker](./inst/sticker/ViewRhex.png)
+# ViewR ![ViewR hex sticker](./reference/figures/ViewRhex.png)
 
 **ViewR** is a single-function R package that opens a feature-rich,
 popup-based Shiny interface for interactively viewing, filtering,

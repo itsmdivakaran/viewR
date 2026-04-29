@@ -3,4 +3,4 @@
 ### Getting started
 
 - [Getting Started with
-  ViewR](https://itsmdivakaran.github.io/ViewR/articles/ViewR-intro.md):
+  ViewR](https://itsmdivakaran.github.io/viewR/articles/ViewR-intro.md):

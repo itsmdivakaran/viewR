@@ -1,4 +1,4 @@
-url: https://itsmdivakaran.github.io/ViewR
+url: https://itsmdivakaran.github.io/viewR
 
 template:
   bootstrap: 5
@@ -17,7 +17,7 @@ navbar:
   components:
     github:
       icon: fab fa-github
-      href: https://github.com/itsmdivakaran/ViewR
+      href: https://github.com/itsmdivakaran/viewR
       aria-label: GitHub
 
 home:
@@ -27,7 +27,7 @@ home:
     code generator for R data frames. Powered by Shiny and DT.
   links:
     - text: Report a bug
-      href: https://github.com/itsmdivakaran/ViewR/issues
+      href: https://github.com/itsmdivakaran/viewR/issues
 
   sidebar:
     structure: [links, license, community, citation, authors, dev]

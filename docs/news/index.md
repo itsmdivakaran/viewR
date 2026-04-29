@@ -38,11 +38,11 @@
   `"readable"`, `"sandstone"`, `"simplex"`, `"spacelab"`, `"united"`,
   `"yeti"`.
 
-- [`install_viewr_deps()`](https://itsmdivakaran.github.io/ViewR/reference/install_viewr_deps.md):
+- [`install_viewr_deps()`](https://itsmdivakaran.github.io/viewR/reference/install_viewr_deps.md):
   helper to detect and install all required packages in one call.
 
 - Pipe-friendly:
-  [`ViewR()`](https://itsmdivakaran.github.io/ViewR/reference/ViewR.md)
+  [`ViewR()`](https://itsmdivakaran.github.io/viewR/reference/ViewR.md)
   accepts piped input and returns the working data frame invisibly when
   the user clicks *Done*.
 
@@ -69,5 +69,5 @@
 ## ViewR 0.1.0
 
 - Initial release: basic
-  [`ViewR()`](https://itsmdivakaran.github.io/ViewR/reference/ViewR.md)
+  [`ViewR()`](https://itsmdivakaran.github.io/viewR/reference/ViewR.md)
   stub.

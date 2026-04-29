@@ -21,6 +21,9 @@ Description: Provides a feature-rich, popup-based interactive interface for
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
+URL: https://github.com/itsmdivakaran/viewR,
+    https://itsmdivakaran.github.io/viewR
+BugReports: https://github.com/itsmdivakaran/viewR/issues
 RoxygenNote: 7.3.3
 Imports:
     shiny (>= 1.7.0),

@@ -1,4 +1,4 @@
-# ViewR ![ViewR hex sticker](./inst/sticker/ViewRhex.png)
+# ViewR ![ViewR hex sticker](./reference/figures/ViewRhex.png)
 
 **ViewR** is a single-function R package that opens a feature-rich,
 popup-based Shiny interface for interactively viewing, filtering,
@@ -171,21 +171,21 @@ MIT (c) 2024 Mahesh Divakaran
 The primary entry point. Open any data frame in the interactive popup
 with a single call.
 
-- [`ViewR()`](https://itsmdivakaran.github.io/ViewR/reference/ViewR.md)
+- [`ViewR()`](https://itsmdivakaran.github.io/viewR/reference/ViewR.md)
   : ViewR: Interactive Data Viewer, Filter, and Editor
 
 ## Utilities
 
 Helper functions for package management.
 
-- [`install_viewr_deps()`](https://itsmdivakaran.github.io/ViewR/reference/install_viewr_deps.md)
+- [`install_viewr_deps()`](https://itsmdivakaran.github.io/viewR/reference/install_viewr_deps.md)
   : Install All ViewR Dependencies
 
 ## Package
 
 Package-level documentation.
 
-- [`ViewR-package`](https://itsmdivakaran.github.io/ViewR/reference/ViewR-package.md)
+- [`ViewR-package`](https://itsmdivakaran.github.io/viewR/reference/ViewR-package.md)
   : ViewR: Interactive Data Viewer, Filter, and Editor
 
 # Articles
@@ -193,4 +193,4 @@ Package-level documentation.
 ### Getting started
 
 - [Getting Started with
-  ViewR](https://itsmdivakaran.github.io/ViewR/articles/ViewR-intro.md):
+  ViewR](https://itsmdivakaran.github.io/viewR/articles/ViewR-intro.md):

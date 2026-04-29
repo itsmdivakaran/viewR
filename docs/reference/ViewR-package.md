@@ -10,18 +10,18 @@ column visibility management; an Excel-like cell editor powered by
 regex); automatic 'dplyr' code generation that reflects every operation
 performed in the UI; and a Variable Info tab with type, missing values,
 and summary statistics. The entire interface is launched with a single
-call to ViewR() and works as a popup dialog, in the RStudio Viewer pane,
-or in the system browser.
+call to ViewR() and works as a popup dialog, in the 'RStudio' Viewer
+pane, or in the system browser.
 
 ## See also
 
 Useful links:
 
-- <https://github.com/imaheshdivakaran/ViewR>
+- <https://github.com/itsmdivakaran/viewR>
 
-- <https://imaheshdivakaran.github.io/ViewR>
+- <https://itsmdivakaran.github.io/viewR>
 
-- Report bugs at <https://github.com/imaheshdivakaran/ViewR/issues>
+- Report bugs at <https://github.com/itsmdivakaran/viewR/issues>
 
 ## Author
 
