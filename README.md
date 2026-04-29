@@ -1,5 +1,5 @@
 
-# ViewR <img src="./man/figures/ViewRhex.png" align="right" height="140" alt="ViewR hex sticker" />
+# ViewR <img src="./man/figures/ViewRhex.png" align="right" height="40" alt="ViewR hex sticker" />
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/ViewR)](https://CRAN.R-project.org/package=ViewR)
