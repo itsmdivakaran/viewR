@@ -1,0 +1,28 @@
+# ViewR: Interactive Data Viewer, Filter, and Editor
+
+Provides a feature-rich, popup-based interactive interface for viewing,
+exploring, filtering, sorting, editing, and analysing R data frames. Key
+features include: a searchable, paginated data table with variable-label
+tooltips; multi-condition filters (AND/OR) with operators for equality,
+comparison, pattern matching, and missingness; multi-column sorting;
+column visibility management; an Excel-like cell editor powered by
+'rhandsontable'; find-and-replace across one or all columns (literal or
+regex); automatic 'dplyr' code generation that reflects every operation
+performed in the UI; and a Variable Info tab with type, missing values,
+and summary statistics. The entire interface is launched with a single
+call to ViewR() and works as a popup dialog, in the RStudio Viewer pane,
+or in the system browser.
+
+## See also
+
+Useful links:
+
+- <https://github.com/imaheshdivakaran/ViewR>
+
+- <https://imaheshdivakaran.github.io/ViewR>
+
+- Report bugs at <https://github.com/imaheshdivakaran/ViewR/issues>
+
+## Author
+
+**Maintainer**: Mahesh Divakaran <imaheshdivakaran@gmail.com>

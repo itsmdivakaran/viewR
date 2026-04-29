@@ -1,0 +1,71 @@
+url: https://itsmdivakaran.github.io/ViewR
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    primary: "#2980b9"
+    link-color: "#2980b9"
+    navbar-bg: "#1a252f"
+    footer-bg: "#1a252f"
+
+navbar:
+  bg: dark
+  structure:
+    left:  [intro, articles, reference]
+    right: [search, github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/itsmdivakaran/ViewR
+      aria-label: GitHub
+
+home:
+  title: "ViewR — Interactive Data Viewer for R"
+  description: >
+    A popup-based interactive data viewer, filter, sort, editor, and
+    code generator for R data frames. Powered by Shiny and DT.
+  links:
+    - text: Report a bug
+      href: https://github.com/itsmdivakaran/ViewR/issues
+
+  sidebar:
+    structure: [links, license, community, citation, authors, dev]
+
+  logo: inst/sticker/ViewR-hex.svg
+
+authors:
+  Mahesh Divakaran:
+    href: https://github.com/itsmdivakaran
+
+reference:
+  - title: "Main function"
+    desc: >
+      The primary entry point. Open any data frame in the interactive
+      popup with a single call.
+    contents:
+      - ViewR
+
+  - title: "Utilities"
+    desc: Helper functions for package management.
+    contents:
+      - install_viewr_deps
+
+  - title: "Package"
+    desc: Package-level documentation.
+    contents:
+      - ViewR-package
+
+articles:
+  - title: "Getting started"
+    navbar: ~
+    contents:
+      - ViewR-intro
+
+footer:
+  structure:
+    left: developed_by
+    right: built_with
+
+development:
+  mode: auto

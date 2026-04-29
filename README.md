@@ -1,0 +1,173 @@
+
+# ViewR <img src="./inst/sticker/ViewRhex.png" align="right" height="140" alt="ViewR hex sticker" />
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/ViewR)](https://CRAN.R-project.org/package=ViewR)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- badges: end -->
+
+**ViewR** is a single-function R package that opens a feature-rich, popup-based
+Shiny interface for interactively viewing, filtering, sorting, editing, and
+analysing any data frame -- with every operation reflected in real-time as
+copy-pasteable `dplyr` code.
+
+---
+
+## Features
+
+- **Data View** -- searchable, paginated DT table with optional variable-label
+  tooltips and per-column search filters
+- **Sidebar Filters** -- unlimited filter conditions with 11 operators
+  (`==`, `!=`, `>`, `>=`, `<`, `<=`, *contains*, *starts with*, *ends with*,
+  *is NA*, *is not NA*); combine rows with AND / OR logic
+- **Multi-column Sort** -- add multiple sort levels; choose ascending or
+  descending per column
+- **Column Visibility** -- show/hide columns with one click via checkboxes
+- **Excel-like Editor** (`edit = TRUE`) -- powered by `rhandsontable`; supports
+  in-cell editing, adding/deleting rows, and unlimited undo/redo
+- **Find & Replace** -- search literal text or regex across one or all columns;
+  case-sensitivity and exact-match options; preview before applying
+- **Variable Info tab** -- data type, N, missing %, unique count, min/max, and
+  sample values for every column
+- **R Code Generation** -- the *R Code* tab always shows the complete, runnable
+  `dplyr` pipeline for the current UI state; one click copies it to the clipboard
+
+---
+
+## Installation
+
+```r
+# From CRAN (once published):
+install.packages("ViewR")
+
+# Development version from GitHub:
+# install.packages("remotes")
+remotes::install_github("itsmdivakaran/ViewR")
+```
+
+Install all optional dependencies at once:
+
+```r
+ViewR::install_viewr_deps()
+```
+
+---
+
+## Quick Start
+
+```r
+library(ViewR)
+
+# Basic viewer -- popup dialog
+ViewR(mtcars)
+
+# Edit mode: returns modified data frame when you click Done
+new_iris <- ViewR(iris, edit = TRUE)
+
+# Custom variable labels + dark theme
+ViewR(mtcars,
+      labels = c(mpg = "Miles per Gallon",
+                 cyl = "Number of Cylinders",
+                 hp  = "Gross Horsepower"),
+      theme  = "darkly")
+
+# Open in the system browser
+ViewR(iris, viewer = "browser")
+
+# Works with haven-imported SPSS/Stata files (labels read automatically)
+# df <- haven::read_sav("my_survey.sav")
+# ViewR(df)
+```
+
+---
+
+## Function Signature
+
+```r
+ViewR(
+  data,
+  edit          = FALSE,
+  popup         = TRUE,
+  labels        = NULL,
+  title         = NULL,
+  viewer        = c("dialog", "browser", "pane"),
+  generate_code = TRUE,
+  theme         = c("flatly", "cerulean", "cosmo", "darkly",
+                    "lumen", "paper", "readable", "sandstone",
+                    "simplex", "spacelab", "united", "yeti"),
+  max_display   = 50000L,
+  return_data   = TRUE
+)
+```
+
+| Argument | Default | Description |
+|---|---|---|
+| `data` | -- | A `data.frame` or `tibble` |
+| `edit` | `FALSE` | Enable Excel-like editing tab |
+| `popup` | `TRUE` | Open as popup dialog |
+| `labels` | `NULL` | Named vector of variable labels |
+| `title` | auto | Window title |
+| `viewer` | `"dialog"` | `"dialog"`, `"browser"`, or `"pane"` |
+| `generate_code` | `TRUE` | Show the R Code tab |
+| `theme` | `"flatly"` | Bootstrap/shinythemes theme |
+| `max_display` | `50000` | Max rows rendered (performance cap) |
+| `return_data` | `TRUE` | Return (edited) data on Done |
+
+---
+
+## Generated Code Example
+
+After applying filters and a sort in the UI, the **R Code** tab shows:
+
+```r
+library(dplyr)
+
+mtcars_result <- mtcars |>
+  filter(
+    `cyl` == "6" &
+    `hp` >= 110
+  ) |>
+  arrange(`mpg`)
+```
+
+---
+
+## UI Overview
+
+```
++-----------------------------------------------------+
+| [=] ViewR -- mtcars         [rows/cols info] [Done] |
++------------------+----------------------------------+
+| FILTERS  [+ add] | [Data] [Edit] [F&R] [Info] [Code]|
+|                  |                                  |
+| SORT     [+ add] |   Searchable, paginated DT table |
+|                  |                                  |
+| COLUMNS          |   (or Edit / Find-Replace /      |
+|  [x] mpg         |    Variable Info / R Code tab)   |
+|  [x] cyl         |                                  |
+|  [ ] disp        |                                  |
+|                  |                                  |
+| DISPLAY          |                                  |
+|  Rows per page   |                                  |
++------------------+----------------------------------+
+```
+
+---
+
+## Dependencies
+
+**Required** (installed automatically):
+`shiny`, `miniUI`, `DT`, `rhandsontable`, `shinyjs`, `shinythemes`,
+`htmltools`, `jsonlite`
+
+**Suggested** (for specific features):
+`haven` (variable labels from `.sav`/`.dta` files),
+`dplyr` (generated code),
+`tibble` (tibble input)
+
+---
+
+## License
+
+MIT (c) 2024 Mahesh Divakaran

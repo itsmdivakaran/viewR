@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181 209" width="181" height="209">
+  <defs>
+    <!-- Background gradient: ViewR brand dark teal -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#1a252f"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+
+    <!-- Glow effect on table header -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clip to hex shape -->
+    <clipPath id="hexClip">
+      <polygon points="90.5,3 179,52 179,157 90.5,206 2,157 2,52"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Hex fill ── -->
+  <polygon points="90.5,3 179,52 179,157 90.5,206 2,157 2,52"
+           fill="url(#bgGrad)"/>
+
+  <!-- ── Subtle grid background lines ── -->
+  <g clip-path="url(#hexClip)" opacity="0.06" stroke="#7fb3d3" stroke-width="0.7">
+    <line x1="0"   y1="70"  x2="181" y2="70"/>
+    <line x1="0"   y1="88"  x2="181" y2="88"/>
+    <line x1="0"   y1="106" x2="181" y2="106"/>
+    <line x1="0"   y1="124" x2="181" y2="124"/>
+    <line x1="40"  y1="55"  x2="40"  y2="175"/>
+    <line x1="75"  y1="55"  x2="75"  y2="175"/>
+    <line x1="110" y1="55"  x2="110" y2="175"/>
+    <line x1="145" y1="55"  x2="145" y2="175"/>
+  </g>
+
+  <!-- ══════════════════════════════════
+       DATA TABLE ICON  (centred ~y=95)
+       ══════════════════════════════════ -->
+  <g transform="translate(33, 58)">
+
+    <!-- Table outer border / shadow -->
+    <rect x="1" y="1" width="116" height="76" rx="5"
+          fill="rgba(0,0,0,0.35)" />
+
+    <!-- Table background -->
+    <rect x="0" y="0" width="116" height="76" rx="5"
+          fill="#1c2e3d" stroke="#3d5a72" stroke-width="1"/>
+
+    <!-- Header row background -->
+    <rect x="0" y="0" width="116" height="17" rx="5"
+          fill="#2980b9"/>
+    <!-- bottom corners of header: square them off -->
+    <rect x="0" y="10" width="116" height="7" fill="#2980b9"/>
+
+    <!-- Header col separators -->
+    <line x1="36" y1="0"  x2="36" y2="17" stroke="#2471a3" stroke-width="0.8"/>
+    <line x1="72" y1="0"  x2="72" y2="17" stroke="#2471a3" stroke-width="0.8"/>
+    <line x1="94" y1="0"  x2="94" y2="17" stroke="#2471a3" stroke-width="0.8"/>
+
+    <!-- Header text pills -->
+    <rect x="5"  y="6" width="24" height="5" rx="2.5" fill="rgba(255,255,255,0.9)"/>
+    <rect x="41" y="6" width="24" height="5" rx="2.5" fill="rgba(255,255,255,0.9)"/>
+    <rect x="77" y="6" width="12" height="5" rx="2.5" fill="rgba(255,255,255,0.9)"/>
+
+    <!-- Filter icon in header far right -->
+    <polygon points="103,5 113,5 109.5,10 109.5,15 106.5,15 106.5,10"
+             fill="rgba(255,255,255,0.85)"/>
+
+    <!-- Row 1 -->
+    <rect x="0" y="18" width="116" height="14" fill="rgba(255,255,255,0.04)"/>
+    <rect x="5"  y="22" width="20" height="4" rx="2" fill="rgba(255,255,255,0.45)"/>
+    <rect x="41" y="22" width="18" height="4" rx="2" fill="rgba(255,255,255,0.45)"/>
+    <rect x="77" y="22" width="11" height="4" rx="2" fill="rgba(52,152,219,0.65)"/>
+
+    <!-- Row 2 — HIGHLIGHTED (selected row) -->
+    <rect x="0" y="33" width="116" height="14" fill="rgba(52,152,219,0.18)"
+          stroke="rgba(52,152,219,0.4)" stroke-width="0.5"/>
+    <rect x="5"  y="37" width="22" height="4" rx="2" fill="rgba(255,255,255,0.80)"/>
+    <rect x="41" y="37" width="20" height="4" rx="2" fill="#3498db"/>
+    <rect x="77" y="37" width="14" height="4" rx="2" fill="rgba(255,255,255,0.80)"/>
+    <!-- Selection indicator bar on left edge -->
+    <rect x="0" y="33" width="3" height="14" fill="#3498db" rx="1.5"/>
+
+    <!-- Row 3 -->
+    <rect x="0" y="48" width="116" height="14" fill="rgba(255,255,255,0.07)"/>
+    <rect x="5"  y="52" width="17" height="4" rx="2" fill="rgba(255,255,255,0.45)"/>
+    <rect x="41" y="52" width="23" height="4" rx="2" fill="rgba(255,255,255,0.45)"/>
+    <rect x="77" y="52" width="9"  height="4" rx="2" fill="rgba(231,76,60,0.7)"/>
+
+    <!-- Row 4 -->
+    <rect x="0" y="63" width="116" height="13" fill="rgba(255,255,255,0.03)"/>
+    <rect x="5"  y="67" width="21" height="4" rx="2" fill="rgba(255,255,255,0.45)"/>
+    <rect x="41" y="67" width="16" height="4" rx="2" fill="rgba(255,255,255,0.45)"/>
+    <rect x="77" y="67" width="12" height="4" rx="2" fill="rgba(52,152,219,0.65)"/>
+
+    <!-- Column separator lines -->
+    <line x1="36" y1="18" x2="36" y2="76" stroke="rgba(255,255,255,0.10)" stroke-width="0.8"/>
+    <line x1="72" y1="18" x2="72" y2="76" stroke="rgba(255,255,255,0.10)" stroke-width="0.8"/>
+    <line x1="94" y1="18" x2="94" y2="76" stroke="rgba(255,255,255,0.10)" stroke-width="0.8"/>
+
+    <!-- Row separator lines -->
+    <line x1="0" y1="32"  x2="116" y2="32"  stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+    <line x1="0" y1="47"  x2="116" y2="47"  stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+    <line x1="0" y1="62"  x2="116" y2="62"  stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+  </g>
+
+  <!-- ══════════════════════════════════
+       "ViewR" LOGOTYPE
+       ══════════════════════════════════ -->
+  <text x="90.5" y="174"
+        font-family="'Helvetica Neue', 'Arial Black', Arial, sans-serif"
+        font-size="38"
+        font-weight="900"
+        fill="#ffffff"
+        text-anchor="middle"
+        letter-spacing="0.5"
+        filter="url(#glow)">ViewR</text>
+
+  <!-- ── Subtitle ── -->
+  <text x="90.5" y="191"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="9.5"
+        font-weight="400"
+        fill="rgba(255,255,255,0.55)"
+        text-anchor="middle"
+        letter-spacing="2.5">INTERACTIVE DATA VIEWER</text>
+
+  <!-- ══════════════════════════════════
+       HEX BORDER (drawn last to layer on top)
+       ══════════════════════════════════ -->
+  <polygon points="90.5,3 179,52 179,157 90.5,206 2,157 2,52"
+           fill="none"
+           stroke="#3498db"
+           stroke-width="3.5"
+           stroke-linejoin="round"/>
+</svg>

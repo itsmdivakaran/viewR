@@ -1,0 +1,17 @@
+^renv$
+^renv\.lock$
+^.*\.Rproj$
+^\.Rproj\.user$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^cran-comments\.md$
+^inst/sticker/make_sticker\.R$
+^\.Rhistory$
+^\.RData$
+^\.DS_Store$
+^README\.Rmd$
+^codecov\.yml$
+^\.lintr$
+^CRAN-SUBMISSION$
