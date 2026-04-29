@@ -320,5 +320,5 @@ sessionInfo()
 #> [19] rstudioapi_0.18.0   tools_4.5.2         ragg_1.5.2         
 #> [22] bslib_0.10.0        evaluate_1.0.5      yaml_2.3.12        
 #> [25] otel_0.2.0          BiocManager_1.30.27 jsonlite_2.0.0     
-#> [28] htmlwidgets_1.6.4   rlang_1.1.7         fs_2.0.1
+#> [28] htmlwidgets_1.6.4   rlang_1.2.0         fs_2.0.1
 ```
