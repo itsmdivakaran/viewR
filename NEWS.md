@@ -1,3 +1,37 @@
+# ViewR 2.0.0
+
+## Major new architecture: the `viewdt()` data explorer widget
+
+ViewR 2.0.0 introduces an entirely new, dependency-free **`htmlwidget`**
+data explorer built from scratch in vanilla JavaScript (no React, no build
+toolchain). It is portable: render it in the RStudio/Positron Viewer, inside
+Shiny, in R Markdown / Quarto, or export it to a standalone HTML file.
+
+* **`viewdt(data, options = viewdt_options())`** — opens the modern explorer.
+* **`viewdt_options()`** — configure theme, labels, hidden columns, NA string,
+  visual features, and the viewer-cap safeguard.
+* **`save_viewdt()`** — export any data frame to a portable, offline HTML grid.
+
+### Explorer features
+
+* **Virtualized grid** that paints only visible cells, with sticky headers and
+  a sticky row-index column; click a row to pin it.
+* **Kaggle-style micro-dashboard headers**: data-type badges, mini
+  distribution spark-histograms (numeric) / top-category stacked bars
+  (categorical), and a colour-coded data-completeness (missingness) bar.
+* **Column metadata cards** on the info icon: rows, unique, missing %, and
+  Min/Mean/Median/Max or Top-5 categories.
+* **Data Insights drawer** with an interactive SVG histogram (numeric) or
+  Pareto bar chart (categorical), completeness meter, and descriptive stats.
+* **Visual query builder**: multi-condition AND/OR filters with type-aware
+  operators and a searchable multi-select for categorical columns.
+* **Column visibility picker** and **global search**.
+* **Reproducible code generator**: copy-pasteable **dplyr**, **base R**, and
+  **SQL** matching the active filter + visible-column state.
+* **Light / dark / auto theme**, variable-label display, and custom NA string.
+
+The legacy Shiny-gadget editor remains available as `ViewR()`.
+
 # ViewR 0.2.0
 
 ## New features

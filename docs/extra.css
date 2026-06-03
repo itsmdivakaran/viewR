@@ -1,0 +1,11 @@
+/* Navbar brand logo: small, never stretched */
+.navbar-brand img,
+.navbar .logo img { height: 32px; width: auto; }
+
+/* README / home hero hex logo: fixed size, correct aspect ratio (543x627) */
+img.viewr-logo,
+.template-home img.viewr-logo {
+  width: 130px !important;
+  height: 150px !important;   /* 130 * 627/543 ≈ 150 keeps the hex undistorted */
+  object-fit: contain;
+}

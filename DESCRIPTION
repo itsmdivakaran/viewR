@@ -1,23 +1,26 @@
 Package: ViewR
 Type: Package
-Title: Interactive Data Viewer, Filter, and Editor
-Version: 0.2.0
+Title: Advanced Interactive Data Tables and Data Explorer
+Version: 2.0.0
 Authors@R: person("Mahesh", "Divakaran",
     email = "imaheshdivakaran@gmail.com",
     role  = c("aut", "cre"),
     comment = c(ORCID = ""))
-Description: Provides a feature-rich, popup-based interactive interface for
-    viewing, exploring, filtering, sorting, editing, and analysing R data
-    frames. Key features include: a searchable, paginated data table with
-    variable-label 'tooltips'; multi-condition filters (AND/OR) with operators
-    for equality, comparison, pattern matching, and missingness; multi-column
-    sorting; column visibility management; an Excel-like cell editor powered
-    by 'rhandsontable'; find-and-replace across one or all columns (literal
-    or regex); automatic 'dplyr' code generation that reflects every operation
-    performed in the 'UI'; and a Variable Info tab with type, missing values,
-    and summary statistics. The entire interface is launched with a single
-    call to ViewR() and works as a popup dialog, in the 'RStudio' Viewer pane,
-    or in the system browser.
+Description: An advanced, interactive data table and data explorer for R,
+    delivered as a modern, self-contained 'htmlwidget' with a high-performance
+    virtualized grid. ViewR renders 'Kaggle'-style
+    micro-dashboard column headers complete with data-type badges, mini
+    distribution spark-histograms, and data-completeness (missingness) bars.
+    It provides hover metadata cards, a sliding Data Insights drawer with
+    interactive histograms and 'Pareto' category charts, a multi-condition
+    visual query builder (AND/OR), a column visibility picker, and a
+    reproducible code generator that emits 'dplyr', base R, and 'SQL' that
+    matches the active filter and column state. The interface is implemented
+    entirely in dependency-free vanilla 'JavaScript' (no 'React' or build
+    toolchain) and works in the 'RStudio'/'Positron' Viewer, inside 'Shiny'
+    apps, in 'R Markdown'/'Quarto', or as a portable standalone 'HTML' file.
+    A single call to viewr() opens the explorer; the legacy 'Shiny'-gadget
+    ViewR() editor remains available.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-GB
@@ -25,15 +28,16 @@ Depends: R (>= 4.1.0)
 URL: https://github.com/itsmdivakaran/viewR,
     https://itsmdivakaran.github.io/viewR/
 BugReports: https://github.com/itsmdivakaran/viewR/issues
-RoxygenNote: 7.3.3
 Imports:
+    htmlwidgets (>= 1.6.0),
+    htmltools (>= 0.5.4),
+    jsonlite (>= 1.8.0),
     shiny (>= 1.7.0),
     DT (>= 0.27),
     rhandsontable (>= 0.3.8),
     shinyjs (>= 2.1.0),
     shinythemes (>= 1.2.0),
-    htmltools (>= 0.5.4),
-    jsonlite (>= 1.8.0),
+    stats,
     utils
 Suggests:
     haven,
@@ -45,3 +49,4 @@ Suggests:
     covr
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0

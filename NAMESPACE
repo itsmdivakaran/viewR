@@ -2,6 +2,11 @@
 
 export(ViewR)
 export(install_viewr_deps)
+export(renderViewdt)
+export(save_viewdt)
+export(viewdt)
+export(viewdtOutput)
+export(viewdt_options)
 importFrom(DT,dataTableOutput)
 importFrom(DT,datatable)
 importFrom(DT,formatStyle)

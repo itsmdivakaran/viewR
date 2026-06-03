@@ -295,7 +295,7 @@ titanic_clean <- ViewR(titanic_df, edit = TRUE)
 sessionInfo()
 #> R version 4.5.2 (2025-10-31)
 #> Platform: aarch64-apple-darwin20
-#> Running under: macOS Tahoe 26.4.1
+#> Running under: macOS Tahoe 26.5.1
 #> 
 #> Matrix products: default
 #> BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib 
@@ -311,14 +311,12 @@ sessionInfo()
 #> [1] stats     graphics  grDevices datasets  utils     methods   base     
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] desc_1.4.3          digest_0.6.39       R6_2.6.1           
-#>  [4] fastmap_1.2.0       xfun_0.57           cachem_1.1.0       
-#>  [7] knitr_1.51          htmltools_0.5.9     rmarkdown_2.31     
-#> [10] lifecycle_1.0.5     cli_3.6.5           sass_0.4.10        
-#> [13] pkgdown_2.2.0       textshaping_1.0.5   jquerylib_0.1.4    
-#> [16] renv_1.1.8          systemfonts_1.3.2   compiler_4.5.2     
-#> [19] rstudioapi_0.18.0   tools_4.5.2         ragg_1.5.2         
-#> [22] bslib_0.10.0        evaluate_1.0.5      yaml_2.3.12        
-#> [25] otel_0.2.0          BiocManager_1.30.27 jsonlite_2.0.0     
-#> [28] htmlwidgets_1.6.4   rlang_1.2.0         fs_2.0.1
+#>  [1] digest_0.6.39     desc_1.4.3        R6_2.6.1          fastmap_1.2.0    
+#>  [5] xfun_0.58         cachem_1.1.0      knitr_1.51        htmltools_0.5.9  
+#>  [9] rmarkdown_2.31    lifecycle_1.0.5   cli_3.6.6         sass_0.4.10      
+#> [13] pkgdown_2.2.0     textshaping_1.0.5 jquerylib_0.1.4   renv_1.1.8       
+#> [17] systemfonts_1.3.2 compiler_4.5.2    rstudioapi_0.18.0 tools_4.5.2      
+#> [21] ragg_1.5.2        bslib_0.11.0      evaluate_1.0.5    yaml_2.3.12      
+#> [25] otel_0.2.0        jsonlite_2.0.0    htmlwidgets_1.6.4 rlang_1.2.0      
+#> [29] fs_2.1.0
 ```

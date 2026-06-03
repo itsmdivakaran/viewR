@@ -5,16 +5,23 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>ViewR — Interactive Data Viewer for R • ViewR</title>
+<title>ViewR — The Advanced Interactive Data Table for R • ViewR</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="ViewR — Interactive Data Viewer for R">
-<meta name="description" content="A popup-based interactive data viewer, filter, sort, editor, and code generator for R data frames. Powered by Shiny and DT.
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="ViewR — The Advanced Interactive Data Table for R">
+<meta name="description" content="Turn any data frame into a fast, beautiful, explorable grid. ViewR's viewdt() is a dependency-free htmlwidget with Kaggle-style column analytics, a Data Insights drawer, a visual query builder, and one-click reproducible dplyr / base R / SQL code — plus the classic ViewR() Shiny gadget.
 ">
-<meta property="og:description" content="A popup-based interactive data viewer, filter, sort, editor, and code generator for R data frames. Powered by Shiny and DT.
+<meta property="og:description" content="Turn any data frame into a fast, beautiful, explorable grid. ViewR's viewdt() is a dependency-free htmlwidget with Kaggle-style column analytics, a Data Insights drawer, a visual query builder, and one-click reproducible dplyr / base R / SQL code — plus the classic ViewR() Shiny gadget.
 ">
+<meta property="og:image" content="https://itsmdivakaran.github.io/viewR/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -24,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="index.html">ViewR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,10 +43,12 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/ViewR-intro.html">Getting Started with ViewR</a></li>
+<li><a class="dropdown-item" href="articles/viewdt.html">Get started with viewdt()</a></li>
+    <li><a class="dropdown-item" href="articles/ViewR-intro.html">ViewR (legacy gadget) intro</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -54,212 +63,281 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="viewr-">ViewR <img src="./reference/figures/ViewRhex.png" align="right" height="40" alt="ViewR hex sticker"><a class="anchor" aria-label="anchor" href="#viewr-"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="viewr-">ViewR <a class="anchor" aria-label="anchor" href="#viewr-"></a>
+</h1>
+</div>
+<blockquote>
+<p><strong>The advanced interactive data table for R.</strong> A modern, dependency-free <code>htmlwidget</code> that turns any data frame into a fast, beautiful, explorable grid — with column analytics, a visual query builder, and one-click reproducible code.</p>
+</blockquote>
 <!-- badges: start -->
 
-<p><strong>ViewR</strong> is a single-function R package that opens a feature-rich, popup-based Shiny interface for interactively viewing, filtering, sorting, editing, and analysing any data frame – with every operation reflected in real-time as copy-pasteable <code>dplyr</code> code.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/itsmdivakaran/viewR" class="external-link">ViewR</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/viewdt.html">viewdt</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>   <span class="co"># that's it</span></span></code></pre></div>
+<p><code><a href="reference/viewdt.html">viewdt()</a></code> is what <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> would look like if it were rebuilt today: every column header is a <strong>micro-dashboard</strong>, every filter writes <strong>runnable code</strong>, and the whole thing is a <strong>single portable HTML file</strong> with zero JavaScript dependencies. It works in the RStudio / Positron Viewer, inside Shiny, in R Markdown / Quarto, or exported for offline sharing.</p>
 <hr>
 <div class="section level2">
-<h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
+<h2 id="why-viewr">Why ViewR?<a class="anchor" aria-label="anchor" href="#why-viewr"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="16%">
+<col width="27%">
+<col width="27%">
+<col width="27%">
+</colgroup>
+<thead><tr>
+<th></th>
+<th align="center"><code>DT</code></th>
+<th align="center"><code>reactable</code></th>
+<th align="center"><strong>ViewR <code><a href="reference/viewdt.html">viewdt()</a></code></strong></th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Virtualized rendering of large data</td>
+<td align="center">⚠️</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>
+<strong>Kaggle-style column headers</strong> (badges, mini-histograms, missingness)</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>
+<strong>Data Insights drawer</strong> (interactive histogram / Pareto)</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>
+<strong>Visual query builder</strong> (AND/OR, type-aware)</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>
+<strong>Reproducible code export</strong> (dplyr / base R / SQL)</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>Column picker + global search</td>
+<td align="center">⚠️</td>
+<td align="center">⚠️</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>Row pinning</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>Light / dark / auto theme</td>
+<td align="center">⚠️</td>
+<td align="center">⚠️</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>JS framework dependency</td>
+<td align="center">jQuery</td>
+<td align="center">React</td>
+<td align="center"><strong>none (vanilla JS)</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>ViewR profiles every column <strong>in R</strong> — types, missingness, histogram bins, top categories — and ships a compact metadata payload to a lean renderer, instead of recomputing statistics in the browser.</p>
+</blockquote>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="highlights">Highlights<a class="anchor" aria-label="anchor" href="#highlights"></a>
 </h2>
 <ul>
-<li>
-<strong>Data View</strong> – searchable, paginated DT table with optional variable-label tooltips and per-column search filters</li>
-<li>
-<strong>Sidebar Filters</strong> – unlimited filter conditions with 11 operators (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <em>contains</em>, <em>starts with</em>, <em>ends with</em>, <em>is NA</em>, <em>is not NA</em>); combine rows with AND / OR logic</li>
-<li>
-<strong>Multi-column Sort</strong> – add multiple sort levels; choose ascending or descending per column</li>
-<li>
-<strong>Column Visibility</strong> – show/hide columns with one click via checkboxes</li>
-<li>
-<strong>Excel-like Editor</strong> (<code>edit = TRUE</code>) – powered by <code>rhandsontable</code>; supports in-cell editing, adding/deleting rows, and unlimited undo/redo</li>
-<li>
-<strong>Find &amp; Replace</strong> – search literal text or regex across one or all columns; case-sensitivity and exact-match options; preview before applying</li>
-<li>
-<strong>Variable Info tab</strong> – data type, N, missing %, unique count, min/max, and sample values for every column</li>
-<li>
-<strong>R Code Generation</strong> – the <em>R Code</em> tab always shows the complete, runnable <code>dplyr</code> pipeline for the current UI state; one click copies it to the clipboard</li>
+<li>🧱 <strong>Virtualized grid</strong> — paints only what’s on screen; sticky headers, sticky row index, click-to-pin rows.</li>
+<li>📊 <strong>Micro-dashboard headers</strong> — data-type badge, mini spark-histogram (numeric) or top-category bar (categorical), and a colour-coded data-completeness bar with hover tooltip.</li>
+<li>🔎 <strong>Data Insights drawer</strong> — click any header chart for a full interactive SVG histogram or Pareto bar chart, completeness meter, and Min/Mean/Median/Max.</li>
+<li>⚡ <strong>Visual query builder</strong> — multi-condition AND/OR filters with type-aware operators (<code>=</code>, <code>&lt;</code>, <code>contains</code>, <code>is in</code>, <code>is NA</code>, …) and a searchable multi-select for categories. Live row/column counter.</li>
+<li>〈/〉 <strong>Reproducible code</strong> — copy the exact <strong>dplyr</strong>, <strong>base R</strong>, or <strong>SQL</strong> for your current filter + visible-column state; your data’s variable name is auto-substituted.</li>
+<li>▦ <strong>Column picker</strong> + global search.</li>
+<li>🎨 <strong>Light / dark / auto</strong> themes; inline variable labels (haven / ADaM ready).</li>
+<li>💾 <strong>Portable export</strong> — <code><a href="reference/save_viewdt.html">save_viewdt()</a></code> writes a self-contained offline HTML.</li>
 </ul>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># From CRAN (once published):</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># From CRAN (once published)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ViewR"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Development version from GitHub:</span></span>
+<span><span class="co"># Development version</span></span>
 <span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"itsmdivakaran/ViewR"</span><span class="op">)</span></span></code></pre></div>
-<p>Install all optional dependencies at once:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ViewR</span><span class="fu">::</span><span class="fu"><a href="reference/install_viewr_deps.html">install_viewr_deps</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+<h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/itsmdivakaran/ViewR" class="external-link">ViewR</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/itsmdivakaran/viewR" class="external-link">ViewR</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Basic viewer -- popup dialog</span></span>
-<span><span class="fu"><a href="reference/ViewR.html">ViewR</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="co"># Open the explorer</span></span>
+<span><span class="fu"><a href="reference/viewdt.html">viewdt</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Edit mode: returns modified data frame when you click Done</span></span>
-<span><span class="va">new_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ViewR.html">ViewR</a></span><span class="op">(</span><span class="va">iris</span>, edit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># Dark theme, hide a column, custom NA placeholder</span></span>
+<span><span class="fu"><a href="reference/viewdt.html">viewdt</a></span><span class="op">(</span></span>
+<span>  <span class="va">iris</span>,</span>
+<span>  options <span class="op">=</span> <span class="fu"><a href="reference/viewdt_options.html">viewdt_options</a></span><span class="op">(</span></span>
+<span>    theme          <span class="op">=</span> <span class="st">"dark"</span>,</span>
+<span>    hidden_columns <span class="op">=</span> <span class="st">"Species"</span>,</span>
+<span>    na_string      <span class="op">=</span> <span class="st">"—"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Custom variable labels + dark theme</span></span>
-<span><span class="fu"><a href="reference/ViewR.html">ViewR</a></span><span class="op">(</span><span class="va">mtcars</span>,</span>
-<span>      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>mpg <span class="op">=</span> <span class="st">"Miles per Gallon"</span>,</span>
-<span>                 cyl <span class="op">=</span> <span class="st">"Number of Cylinders"</span>,</span>
-<span>                 hp  <span class="op">=</span> <span class="st">"Gross Horsepower"</span><span class="op">)</span>,</span>
-<span>      theme  <span class="op">=</span> <span class="st">"darkly"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Open in the system browser</span></span>
-<span><span class="fu"><a href="reference/ViewR.html">ViewR</a></span><span class="op">(</span><span class="va">iris</span>, viewer <span class="op">=</span> <span class="st">"browser"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Works with haven-imported SPSS/Stata files (labels read automatically)</span></span>
-<span><span class="co"># df &lt;- haven::read_sav("my_survey.sav")</span></span>
-<span><span class="co"># ViewR(df)</span></span></code></pre></div>
+<span><span class="co"># Export a portable, offline HTML report</span></span>
+<span><span class="fu"><a href="reference/save_viewdt.html">save_viewdt</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="st">"mtcars.html"</span>, open <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="inside-shiny">Inside Shiny<a class="anchor" aria-label="anchor" href="#inside-shiny"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/itsmdivakaran/viewR" class="external-link">ViewR</a></span><span class="op">)</span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span><span class="fu"><a href="reference/viewdt-shiny.html">viewdtOutput</a></span><span class="op">(</span><span class="st">"grid"</span>, height <span class="op">=</span> <span class="st">"640px"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/viewdt-shiny.html">renderViewdt</a></span><span class="op">(</span><span class="fu"><a href="reference/viewdt.html">viewdt</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="in-r-markdown--quarto">In R Markdown / Quarto<a class="anchor" aria-label="anchor" href="#in-r-markdown--quarto"></a>
+</h3>
+<p>Just call <code>viewdt(df)</code> in a chunk — the widget renders inline in the knitted HTML.</p>
 <hr>
 </div>
+</div>
 <div class="section level2">
-<h2 id="function-signature">Function Signature<a class="anchor" aria-label="anchor" href="#function-signature"></a>
+<h2 id="the-viewdt-api">The <code>viewdt()</code> API<a class="anchor" aria-label="anchor" href="#the-viewdt-api"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ViewR.html">ViewR</a></span><span class="op">(</span></span>
-<span>  <span class="va">data</span>,</span>
-<span>  edit          <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  popup         <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  labels        <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  title         <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  viewer        <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dialog"</span>, <span class="st">"browser"</span>, <span class="st">"pane"</span><span class="op">)</span>,</span>
-<span>  generate_code <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  theme         <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"flatly"</span>, <span class="st">"cerulean"</span>, <span class="st">"cosmo"</span>, <span class="st">"darkly"</span>,</span>
-<span>                    <span class="st">"lumen"</span>, <span class="st">"paper"</span>, <span class="st">"readable"</span>, <span class="st">"sandstone"</span>,</span>
-<span>                    <span class="st">"simplex"</span>, <span class="st">"spacelab"</span>, <span class="st">"united"</span>, <span class="st">"yeti"</span><span class="op">)</span>,</span>
-<span>  max_display   <span class="op">=</span> <span class="fl">50000L</span>,</span>
-<span>  return_data   <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/viewdt.html">viewdt</a></span><span class="op">(</span><span class="va">data</span>, options <span class="op">=</span> <span class="fu"><a href="reference/viewdt_options.html">viewdt_options</a></span><span class="op">(</span><span class="op">)</span>, dataset_name <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<p>Everything visual is controlled by <code><a href="reference/viewdt_options.html">viewdt_options()</a></code>:</p>
 <table class="table">
 <thead><tr>
-<th>Argument</th>
+<th>Option</th>
 <th>Default</th>
-<th>Description</th>
+<th>What it does</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><code>data</code></td>
-<td>–</td>
-<td>A <code>data.frame</code> or <code>tibble</code>
-</td>
-</tr>
-<tr>
-<td><code>edit</code></td>
-<td><code>FALSE</code></td>
-<td>Enable Excel-like editing tab</td>
-</tr>
-<tr>
-<td><code>popup</code></td>
-<td><code>TRUE</code></td>
-<td>Open as popup dialog</td>
-</tr>
-<tr>
-<td><code>labels</code></td>
-<td><code>NULL</code></td>
-<td>Named vector of variable labels</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>auto</td>
-<td>Window title</td>
-</tr>
-<tr>
-<td><code>viewer</code></td>
-<td><code>"dialog"</code></td>
-<td>
-<code>"dialog"</code>, <code>"browser"</code>, or <code>"pane"</code>
-</td>
-</tr>
-<tr>
-<td><code>generate_code</code></td>
-<td><code>TRUE</code></td>
-<td>Show the R Code tab</td>
-</tr>
-<tr>
 <td><code>theme</code></td>
-<td><code>"flatly"</code></td>
-<td>Bootstrap/shinythemes theme</td>
+<td><code>"auto"</code></td>
+<td>
+<code>"auto"</code>, <code>"light"</code>, or <code>"dark"</code>
+</td>
 </tr>
 <tr>
-<td><code>max_display</code></td>
-<td><code>50000</code></td>
-<td>Max rows rendered (performance cap)</td>
-</tr>
-<tr>
-<td><code>return_data</code></td>
+<td><code>show_labels</code></td>
 <td><code>TRUE</code></td>
-<td>Return (edited) data on Done</td>
+<td>Inline variable labels in headers</td>
+</tr>
+<tr>
+<td><code>histograms</code></td>
+<td><code>TRUE</code></td>
+<td>Mini spark-histograms / category bars</td>
+</tr>
+<tr>
+<td><code>missing_bars</code></td>
+<td><code>TRUE</code></td>
+<td>Data-completeness bar per column</td>
+</tr>
+<tr>
+<td><code>type_badges</code></td>
+<td><code>TRUE</code></td>
+<td>Data-type badges</td>
+</tr>
+<tr>
+<td><code>insights</code></td>
+<td><code>TRUE</code></td>
+<td>Sliding Data Insights drawer</td>
+</tr>
+<tr>
+<td><code>query_builder</code></td>
+<td><code>TRUE</code></td>
+<td>Multi-condition visual filters</td>
+</tr>
+<tr>
+<td><code>column_picker</code></td>
+<td><code>TRUE</code></td>
+<td>Show/hide columns</td>
+</tr>
+<tr>
+<td><code>code_export</code></td>
+<td><code>TRUE</code></td>
+<td>dplyr / base R / SQL generator</td>
+</tr>
+<tr>
+<td><code>global_search</code></td>
+<td><code>TRUE</code></td>
+<td>Search-all-columns box</td>
+</tr>
+<tr>
+<td><code>na_string</code></td>
+<td><code>"NA"</code></td>
+<td>Missing-value placeholder</td>
+</tr>
+<tr>
+<td><code>hidden_columns</code></td>
+<td><code>NULL</code></td>
+<td>Columns hidden on first render</td>
 </tr>
 </tbody>
 </table>
+<p>See <code><a href="articles/viewdt.html">vignette("viewdt", package = "ViewR")</a></code> for a full, worked walk-through with live grids.</p>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="generated-code-example">Generated Code Example<a class="anchor" aria-label="anchor" href="#generated-code-example"></a>
+<h2 id="reproducible-code-generated-for-you">Reproducible code, generated for you<a class="anchor" aria-label="anchor" href="#reproducible-code-generated-for-you"></a>
 </h2>
-<p>After applying filters and a sort in the UI, the <strong>R Code</strong> tab shows:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<p>Build a filter in the UI, click <strong>Code</strong>, and copy any of:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># dplyr</span></span>
+<span><span class="va">mtcars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">==</span> <span class="fl">6</span>, <span class="va">mpg</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">mpg</span>, <span class="va">cyl</span>, <span class="va">hp</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mtcars_result</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span></span>
-<span>    <span class="va">`cyl`</span> <span class="op">==</span> <span class="st">"6"</span> <span class="op">&amp;</span></span>
-<span>    <span class="va">`hp`</span> <span class="op">&gt;=</span> <span class="fl">110</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">`mpg`</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># base R</span></span>
+<span><span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span> <span class="op">==</span> <span class="fl">6</span> <span class="op">&amp;</span> <span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span> <span class="op">&gt;</span> <span class="fl">20</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"hp"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co">-- SQL</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="kw">SELECT</span> mpg, cyl, hp <span class="kw">FROM</span> mtcars <span class="kw">WHERE</span> cyl <span class="op">=</span> <span class="dv">6</span> <span class="kw">AND</span> mpg <span class="op">&gt;</span> <span class="dv">20</span>;</span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="ui-overview">UI Overview<a class="anchor" aria-label="anchor" href="#ui-overview"></a>
+<h2 id="also-included-the-classic-viewr-gadget">Also included: the classic <code>ViewR()</code> gadget<a class="anchor" aria-label="anchor" href="#also-included-the-classic-viewr-gadget"></a>
 </h2>
-<pre><code>+-----------------------------------------------------+
-| [=] ViewR -- mtcars         [rows/cols info] [Done] |
-+------------------+----------------------------------+
-| FILTERS  [+ add] | [Data] [Edit] [F&amp;R] [Info] [Code]|
-|                  |                                  |
-| SORT     [+ add] |   Searchable, paginated DT table |
-|                  |                                  |
-| COLUMNS          |   (or Edit / Find-Replace /      |
-|  [x] mpg         |    Variable Info / R Code tab)   |
-|  [x] cyl         |                                  |
-|  [ ] disp        |                                  |
-|                  |                                  |
-| DISPLAY          |                                  |
-|  Rows per page   |                                  |
-+------------------+----------------------------------+</code></pre>
-<hr>
-</div>
-<div class="section level2">
-<h2 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
-</h2>
-<p><strong>Required</strong> (installed automatically): <code>shiny</code>, <code>miniUI</code>, <code>DT</code>, <code>rhandsontable</code>, <code>shinyjs</code>, <code>shinythemes</code>, <code>htmltools</code>, <code>jsonlite</code></p>
-<p><strong>Suggested</strong> (for specific features): <code>haven</code> (variable labels from <code>.sav</code>/<code>.dta</code> files), <code>dplyr</code> (generated code), <code>tibble</code> (tibble input)</p>
+<p>The original Shiny-gadget viewer/editor is still here for in-session work — filtering, multi-column sort, an Excel-like editor (<code>rhandsontable</code>), find-and-replace, and live <code>dplyr</code> code:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">new_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ViewR.html">ViewR</a></span><span class="op">(</span><span class="va">iris</span>, edit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>   <span class="co"># returns the edited data on Done</span></span></code></pre></div>
+<p>See <code><a href="reference/ViewR.html">?ViewR</a></code> and <code><a href="articles/ViewR-intro.html">vignette("ViewR-intro", package = "ViewR")</a></code>.</p>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h2>
-<p>MIT (c) 2024 Mahesh Divakaran</p>
+<p>MIT © 2024 Mahesh Divakaran</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=ViewR" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/itsmdivakaran/viewR/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/itsmdivakaran/viewR/issues" class="external-link">Report a bug</a></li>
 <li><a href="https://github.com/itsmdivakaran/viewR/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>

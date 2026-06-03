@@ -1,5 +1,10 @@
 
-# ViewR <img src="./man/figures/ViewRhex.png" align="right" height="40" alt="ViewR hex sticker" />
+# ViewR <img src="man/figures/logo.png" align="right" width="130" height="150" alt="ViewR hex sticker" class="viewr-logo" />
+
+> **The advanced interactive data table for R.** A modern, dependency-free
+> `htmlwidget` that turns any data frame into a fast, beautiful, explorable
+> grid — with column analytics, a visual query builder, and one-click
+> reproducible code.
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/ViewR)](https://CRAN.R-project.org/package=ViewR)
@@ -7,167 +12,172 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-**ViewR** is a single-function R package that opens a feature-rich, popup-based
-Shiny interface for interactively viewing, filtering, sorting, editing, and
-analysing any data frame -- with every operation reflected in real-time as
-copy-pasteable `dplyr` code.
+```r
+library(ViewR)
+viewdt(mtcars)   # that's it
+```
+
+`viewdt()` is what `DT::datatable()` would look like if it were rebuilt today:
+every column header is a **micro-dashboard**, every filter writes **runnable
+code**, and the whole thing is a **single portable HTML file** with zero
+JavaScript dependencies. It works in the RStudio / Positron Viewer, inside
+Shiny, in R Markdown / Quarto, or exported for offline sharing.
 
 ---
 
-## Features
+## Why ViewR?
 
-- **Data View** -- searchable, paginated DT table with optional variable-label
-  tooltips and per-column search filters
-- **Sidebar Filters** -- unlimited filter conditions with 11 operators
-  (`==`, `!=`, `>`, `>=`, `<`, `<=`, *contains*, *starts with*, *ends with*,
-  *is NA*, *is not NA*); combine rows with AND / OR logic
-- **Multi-column Sort** -- add multiple sort levels; choose ascending or
-  descending per column
-- **Column Visibility** -- show/hide columns with one click via checkboxes
-- **Excel-like Editor** (`edit = TRUE`) -- powered by `rhandsontable`; supports
-  in-cell editing, adding/deleting rows, and unlimited undo/redo
-- **Find & Replace** -- search literal text or regex across one or all columns;
-  case-sensitivity and exact-match options; preview before applying
-- **Variable Info tab** -- data type, N, missing %, unique count, min/max, and
-  sample values for every column
-- **R Code Generation** -- the *R Code* tab always shows the complete, runnable
-  `dplyr` pipeline for the current UI state; one click copies it to the clipboard
+|  | `DT` | `reactable` | **ViewR `viewdt()`** |
+|---|:---:|:---:|:---:|
+| Virtualized rendering of large data | ⚠️ | ✅ | ✅ |
+| **Kaggle-style column headers** (badges, mini-histograms, missingness) | ❌ | ❌ | ✅ |
+| **Data Insights drawer** (interactive histogram / Pareto) | ❌ | ❌ | ✅ |
+| **Visual query builder** (AND/OR, type-aware) | ❌ | ❌ | ✅ |
+| **Reproducible code export** (dplyr / base R / SQL) | ❌ | ❌ | ✅ |
+| Column picker + global search | ⚠️ | ⚠️ | ✅ |
+| Row pinning | ❌ | ❌ | ✅ |
+| Light / dark / auto theme | ⚠️ | ⚠️ | ✅ |
+| JS framework dependency | jQuery | React | **none (vanilla JS)** |
+
+> ViewR profiles every column **in R** — types, missingness, histogram bins,
+> top categories — and ships a compact metadata payload to a lean renderer,
+> instead of recomputing statistics in the browser.
+
+---
+
+## Highlights
+
+- 🧱 **Virtualized grid** — paints only what's on screen; sticky headers, sticky
+  row index, click-to-pin rows.
+- 📊 **Micro-dashboard headers** — data-type badge, mini spark-histogram
+  (numeric) or top-category bar (categorical), and a colour-coded
+  data-completeness bar with hover tooltip.
+- 🔎 **Data Insights drawer** — click any header chart for a full interactive
+  SVG histogram or Pareto bar chart, completeness meter, and Min/Mean/Median/Max.
+- ⚡ **Visual query builder** — multi-condition AND/OR filters with type-aware
+  operators (`=`, `<`, `contains`, `is in`, `is NA`, …) and a searchable
+  multi-select for categories. Live row/column counter.
+- 〈/〉 **Reproducible code** — copy the exact **dplyr**, **base R**, or **SQL**
+  for your current filter + visible-column state; your data's variable name is
+  auto-substituted.
+- ▦ **Column picker** + global search.
+- 🎨 **Light / dark / auto** themes; inline variable labels (haven / ADaM ready).
+- 💾 **Portable export** — `save_viewdt()` writes a self-contained offline HTML.
 
 ---
 
 ## Installation
 
 ```r
-# From CRAN (once published):
+# From CRAN (once published)
 install.packages("ViewR")
 
-# Development version from GitHub:
+# Development version
 # install.packages("remotes")
 remotes::install_github("itsmdivakaran/ViewR")
 ```
 
-Install all optional dependencies at once:
-
-```r
-ViewR::install_viewr_deps()
-```
-
 ---
 
-## Quick Start
+## Quick start
 
 ```r
 library(ViewR)
 
-# Basic viewer -- popup dialog
-ViewR(mtcars)
+# Open the explorer
+viewdt(mtcars)
 
-# Edit mode: returns modified data frame when you click Done
-new_iris <- ViewR(iris, edit = TRUE)
-
-# Custom variable labels + dark theme
-ViewR(mtcars,
-      labels = c(mpg = "Miles per Gallon",
-                 cyl = "Number of Cylinders",
-                 hp  = "Gross Horsepower"),
-      theme  = "darkly")
-
-# Open in the system browser
-ViewR(iris, viewer = "browser")
-
-# Works with haven-imported SPSS/Stata files (labels read automatically)
-# df <- haven::read_sav("my_survey.sav")
-# ViewR(df)
-```
-
----
-
-## Function Signature
-
-```r
-ViewR(
-  data,
-  edit          = FALSE,
-  popup         = TRUE,
-  labels        = NULL,
-  title         = NULL,
-  viewer        = c("dialog", "browser", "pane"),
-  generate_code = TRUE,
-  theme         = c("flatly", "cerulean", "cosmo", "darkly",
-                    "lumen", "paper", "readable", "sandstone",
-                    "simplex", "spacelab", "united", "yeti"),
-  max_display   = 50000L,
-  return_data   = TRUE
+# Dark theme, hide a column, custom NA placeholder
+viewdt(
+  iris,
+  options = viewdt_options(
+    theme          = "dark",
+    hidden_columns = "Species",
+    na_string      = "—"
+  )
 )
+
+# Export a portable, offline HTML report
+save_viewdt(mtcars, "mtcars.html", open = TRUE)
 ```
 
-| Argument | Default | Description |
-|---|---|---|
-| `data` | -- | A `data.frame` or `tibble` |
-| `edit` | `FALSE` | Enable Excel-like editing tab |
-| `popup` | `TRUE` | Open as popup dialog |
-| `labels` | `NULL` | Named vector of variable labels |
-| `title` | auto | Window title |
-| `viewer` | `"dialog"` | `"dialog"`, `"browser"`, or `"pane"` |
-| `generate_code` | `TRUE` | Show the R Code tab |
-| `theme` | `"flatly"` | Bootstrap/shinythemes theme |
-| `max_display` | `50000` | Max rows rendered (performance cap) |
-| `return_data` | `TRUE` | Return (edited) data on Done |
-
----
-
-## Generated Code Example
-
-After applying filters and a sort in the UI, the **R Code** tab shows:
+### Inside Shiny
 
 ```r
-library(dplyr)
+library(shiny); library(ViewR)
+ui <- fluidPage(viewdtOutput("grid", height = "640px"))
+server <- function(input, output, session)
+  output$grid <- renderViewdt(viewdt(mtcars))
+shinyApp(ui, server)
+```
 
-mtcars_result <- mtcars |>
-  filter(
-    `cyl` == "6" &
-    `hp` >= 110
-  ) |>
-  arrange(`mpg`)
+### In R Markdown / Quarto
+
+Just call `viewdt(df)` in a chunk — the widget renders inline in the
+knitted HTML.
+
+---
+
+## The `viewdt()` API
+
+```r
+viewdt(data, options = viewdt_options(), dataset_name = NULL, ...)
+```
+
+Everything visual is controlled by `viewdt_options()`:
+
+| Option | Default | What it does |
+|---|---|---|
+| `theme` | `"auto"` | `"auto"`, `"light"`, or `"dark"` |
+| `show_labels` | `TRUE` | Inline variable labels in headers |
+| `histograms` | `TRUE` | Mini spark-histograms / category bars |
+| `missing_bars` | `TRUE` | Data-completeness bar per column |
+| `type_badges` | `TRUE` | Data-type badges |
+| `insights` | `TRUE` | Sliding Data Insights drawer |
+| `query_builder` | `TRUE` | Multi-condition visual filters |
+| `column_picker` | `TRUE` | Show/hide columns |
+| `code_export` | `TRUE` | dplyr / base R / SQL generator |
+| `global_search` | `TRUE` | Search-all-columns box |
+| `na_string` | `"NA"` | Missing-value placeholder |
+| `hidden_columns` | `NULL` | Columns hidden on first render |
+
+See `vignette("viewdt", package = "ViewR")` for a full, worked walk-through
+with live grids.
+
+---
+
+## Reproducible code, generated for you
+
+Build a filter in the UI, click **Code**, and copy any of:
+
+```r
+# dplyr
+mtcars %>% filter(cyl == 6, mpg > 20) %>% select(mpg, cyl, hp)
+
+# base R
+mtcars[mtcars$cyl == 6 & mtcars$mpg > 20, c("mpg", "cyl", "hp")]
+```
+```sql
+-- SQL
+SELECT mpg, cyl, hp FROM mtcars WHERE cyl = 6 AND mpg > 20;
 ```
 
 ---
 
-## UI Overview
+## Also included: the classic `ViewR()` gadget
 
-```
-+-----------------------------------------------------+
-| [=] ViewR -- mtcars         [rows/cols info] [Done] |
-+------------------+----------------------------------+
-| FILTERS  [+ add] | [Data] [Edit] [F&R] [Info] [Code]|
-|                  |                                  |
-| SORT     [+ add] |   Searchable, paginated DT table |
-|                  |                                  |
-| COLUMNS          |   (or Edit / Find-Replace /      |
-|  [x] mpg         |    Variable Info / R Code tab)   |
-|  [x] cyl         |                                  |
-|  [ ] disp        |                                  |
-|                  |                                  |
-| DISPLAY          |                                  |
-|  Rows per page   |                                  |
-+------------------+----------------------------------+
+The original Shiny-gadget viewer/editor is still here for in-session work —
+filtering, multi-column sort, an Excel-like editor (`rhandsontable`),
+find-and-replace, and live `dplyr` code:
+
+```r
+new_iris <- ViewR(iris, edit = TRUE)   # returns the edited data on Done
 ```
 
----
-
-## Dependencies
-
-**Required** (installed automatically):
-`shiny`, `miniUI`, `DT`, `rhandsontable`, `shinyjs`, `shinythemes`,
-`htmltools`, `jsonlite`
-
-**Suggested** (for specific features):
-`haven` (variable labels from `.sav`/`.dta` files),
-`dplyr` (generated code),
-`tibble` (tibble input)
+See `?ViewR` and `vignette("ViewR-intro", package = "ViewR")`.
 
 ---
 
 ## License
 
-MIT (c) 2024 Mahesh Divakaran
+MIT © 2024 Mahesh Divakaran

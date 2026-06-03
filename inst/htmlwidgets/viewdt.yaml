@@ -1,0 +1,5 @@
+dependencies:
+  - name: viewr-css
+    version: 2.0.0
+    src: htmlwidgets/lib/viewr
+    stylesheet: viewr.css

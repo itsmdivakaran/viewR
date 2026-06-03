@@ -12,37 +12,56 @@ template:
 navbar:
   bg: dark
   structure:
-    left:  [intro, articles, reference]
+    left:  [intro, articles, reference, news]
     right: [search, github]
   components:
+    articles:
+      text: Articles
+      menu:
+        - text: "Get started with viewdt()"
+          href: articles/viewdt.html
+        - text: "ViewR (legacy gadget) intro"
+          href: articles/ViewR-intro.html
+    news:
+      text: Changelog
+      href: news/index.html
     github:
       icon: fab fa-github
       href: https://github.com/itsmdivakaran/viewR
       aria-label: GitHub
 
 home:
-  title: "ViewR — Interactive Data Viewer for R"
+  title: "ViewR — The Advanced Interactive Data Table for R"
   description: >
-    A popup-based interactive data viewer, filter, sort, editor, and
-    code generator for R data frames. Powered by Shiny and DT.
-  links:
-    - text: Report a bug
-      href: https://github.com/itsmdivakaran/viewR/issues
+    Turn any data frame into a fast, beautiful, explorable grid. ViewR's
+    viewdt() is a dependency-free htmlwidget with Kaggle-style column
+    analytics, a Data Insights drawer, a visual query builder, and
+    one-click reproducible dplyr / base R / SQL code — plus the classic
+    ViewR() Shiny gadget.
 
   sidebar:
     structure: [links, license, community, citation, authors, dev]
-
-  logo: inst/sticker/ViewR-hex.svg
 
 authors:
   Mahesh Divakaran:
     href: https://github.com/itsmdivakaran
 
 reference:
-  - title: "Main function"
+  - title: "Data explorer (v2.0.0)"
     desc: >
-      The primary entry point. Open any data frame in the interactive
-      popup with a single call.
+      The modern, dependency-free htmlwidget explorer: open, configure,
+      and export an interactive data grid.
+    contents:
+      - viewdt
+      - viewdt_options
+      - save_viewdt
+      - viewdtOutput
+      - renderViewdt
+
+  - title: "Legacy Shiny gadget"
+    desc: >
+      The original popup-based viewer / editor with live dplyr code
+      generation.
     contents:
       - ViewR
 
@@ -60,6 +79,7 @@ articles:
   - title: "Getting started"
     navbar: ~
     contents:
+      - viewdt
       - ViewR-intro
 
 footer:
