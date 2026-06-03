@@ -2,15 +2,15 @@ url: https://itsmdivakaran.github.io/viewR
 
 template:
   bootstrap: 5
-  bootswatch: flatly
+  bootswatch: lux
   bslib:
-    primary: "#2980b9"
-    link-color: "#2980b9"
-    navbar-bg: "#1a252f"
-    footer-bg: "#1a252f"
+    primary: "#0066cc"
+    link-color: "#0066cc"
+    navbar-bg: "#ffffff"
+    footer-bg: "#f8f9fa"
 
 navbar:
-  bg: dark
+  bg: light
   structure:
     left:  [intro, articles, reference, news]
     right: [search, github]
