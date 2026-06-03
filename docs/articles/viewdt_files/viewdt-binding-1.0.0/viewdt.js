@@ -100,28 +100,12 @@ HTMLWidgets.widget({
      * ===================================================================*/
     function buildToolbar() {
       toolbar.innerHTML = "";
-
-      // LEFT: action buttons
       var left = h("div", "viewr-tb-left");
-      if (S.opt.query_builder) {
-        var fbtn = btn("Filter", function () { openFilterModal(); });
-        fbtn.classList.add("ico-filter");
-        S.filterBtn = fbtn;
-        left.appendChild(fbtn);
-      }
-      if (S.opt.column_picker) {
-        var cbtn = btn("Columns", function () { openColumnModal(); });
-        cbtn.classList.add("ico-cols");
-        left.appendChild(cbtn);
-      }
-      if (S.opt.code_export) {
-        var kbtn = btn("Code", function () { openCodeModal(); });
-        kbtn.classList.add("ico-code");
-        left.appendChild(kbtn);
-      }
+      var count = h("span", "viewr-count");
+      S.countEl = count;
+      left.appendChild(count);
       toolbar.appendChild(left);
 
-      // CENTER: global search
       var center = h("div", "viewr-tb-center");
       if (S.opt.global_search) {
         var wrap = h("div", "viewr-searchwrap");
@@ -138,13 +122,26 @@ HTMLWidgets.widget({
       }
       toolbar.appendChild(center);
 
-      // RIGHT: row & column counts
       var right = h("div", "viewr-tb-right");
-      var count = h("span", "viewr-count");
-      S.countEl = count;
-      right.appendChild(count);
-      toolbar.appendChild(right);
 
+      if (S.opt.query_builder) {
+        var fbtn = btn("Filter", function () { openFilterModal(); });
+        fbtn.classList.add("ico-filter");
+        S.filterBtn = fbtn;
+        right.appendChild(fbtn);
+      }
+      if (S.opt.column_picker) {
+        var cbtn = btn("Columns", function () { openColumnModal(); });
+        cbtn.classList.add("ico-cols");
+        right.appendChild(cbtn);
+      }
+      if (S.opt.code_export) {
+        var kbtn = btn("Code", function () { openCodeModal(); });
+        kbtn.classList.add("ico-code");
+        right.appendChild(kbtn);
+      }
+
+      toolbar.appendChild(right);
       updateCount();
       updateFilterBadge();
     }
@@ -156,13 +153,10 @@ HTMLWidgets.widget({
     function updateCount() {
       var c = S.countEl;
       if (!c) return;
-      var rowsTxt = S.order.length === S.nrow
+      c.innerHTML = S.order.length === S.nrow
         ? "<b>" + S.nrow.toLocaleString() + "</b> rows"
         : "<b>" + S.order.length.toLocaleString() + "</b> / " +
           S.nrow.toLocaleString() + " rows";
-      var colsTxt = "<b>" + S.visible.length + "</b> / " +
-        S.names.length + " cols";
-      c.innerHTML = rowsTxt + "<span class='viewr-count-sep'>·</span>" + colsTxt;
     }
     function updateFilterBadge() {
       var b = S.filterBtn;
@@ -598,7 +592,7 @@ HTMLWidgets.widget({
           list.appendChild(lab);
         });
       }
-      function applyCols() { buildHeader(); render(); updateCount(); updateFilterBadge(); }
+      function applyCols() { buildHeader(); render(); updateFilterBadge(); }
       paint();
     }
 

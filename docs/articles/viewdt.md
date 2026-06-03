@@ -4,8 +4,8 @@
 is the modern ViewR data explorer: a dependency-free
 [`htmlwidget`](https://www.htmlwidgets.org/) built in plain vanilla
 JavaScript. It profiles every column **in R** and renders a virtualized
-grid with compact micro-dashboard headers, a Data Insights drawer,
-a visual query builder, a column picker, and a reproducible code
+grid with compact micro-dashboard headers, a Data Insights drawer, a
+visual query builder, a column picker, and a reproducible code
 generator.
 
 It is distinct from the legacy Shiny-gadget

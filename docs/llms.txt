@@ -25,7 +25,7 @@ in R Markdown / Quarto, or exported for offline sharing.
 |  | `DT` | `reactable` | **ViewR [`viewdt()`](https://itsmdivakaran.github.io/viewR/reference/viewdt.md)** |
 |----|:--:|:--:|:--:|
 | Virtualized rendering of large data | ⚠️ | ✅ | ✅ |
-| **Kaggle-style column headers** (badges, mini-histograms, missingness) | ❌ | ❌ | ✅ |
+| **Compact column dashboards** (badges, mini-histograms, missingness) | ❌ | ❌ | ✅ |
 | **Data Insights drawer** (interactive histogram / Pareto) | ❌ | ❌ | ✅ |
 | **Visual query builder** (AND/OR, type-aware) | ❌ | ❌ | ✅ |
 | **Reproducible code export** (dplyr / base R / SQL) | ❌ | ❌ | ✅ |
@@ -68,12 +68,7 @@ in R Markdown / Quarto, or exported for offline sharing.
 ## Installation
 
 ``` r
-# From CRAN (once published)
 install.packages("ViewR")
-
-# Development version
-# install.packages("remotes")
-remotes::install_github("itsmdivakaran/ViewR")
 ```
 
 ------------------------------------------------------------------------
