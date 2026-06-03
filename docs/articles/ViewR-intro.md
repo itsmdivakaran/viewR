@@ -23,13 +23,6 @@ Install the release version from CRAN:
 install.packages("ViewR")
 ```
 
-Or install the development version from GitHub:
-
-``` r
-# install.packages("remotes")
-remotes::install_github("imaheshdivakaran/ViewR")
-```
-
 Run this helper to check and install all required dependencies:
 
 ``` r
