@@ -6,11 +6,11 @@ template:
   bslib:
     primary: "#0066cc"
     link-color: "#0066cc"
-    navbar-bg: "#ffffff"
+    navbar-bg: "#0066cc"
     footer-bg: "#f8f9fa"
 
 navbar:
-  bg: light
+  bg: dark
   structure:
     left:  [intro, articles, reference, news]
     right: [search, github]

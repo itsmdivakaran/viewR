@@ -9,3 +9,25 @@ img.viewr-logo,
   height: 150px !important;   /* 130 * 627/543 ≈ 150 keeps the hex undistorted */
   object-fit: contain;
 }
+
+/* Fix text cropping and improve readability */
+body {
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+  white-space: normal;
+  overflow: visible;
+  padding: 0.5rem 1rem;
+}
+
+/* Ensure headers are not cropped */
+h1, h2, h3, h4, h5, h6 {
+  overflow: visible;
+  text-overflow: clip;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
